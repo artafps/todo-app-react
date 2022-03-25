@@ -22,9 +22,7 @@ function App() {
   const handleDeletetodo = (id) => {
     const carttodo = [...todos];
     const cartupdate = carttodo.filter((item) => {
-      if (item.id !== id) {
-        return item;
-      }
+        return item.id !== id;
     });
     settodo(cartupdate);
   };
