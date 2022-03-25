@@ -1,0 +1,17 @@
+body{
+  align-items: center;
+  text-align: center;
+}
+.todobox{
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+}
+.input-group-width{
+  width: 50%;
+  margin: auto;
+}
