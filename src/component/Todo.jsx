@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-const Todo = ({ car, handleDeletetodo, complited, handleComplitedtodo, key}) => {
+const Todo = ({ car, handleDeletetodo, complited, handleComplitedtodo, idprop}) => {
   return (
-    <div key=key >
+    <Fragment key={idprop} >
       <div
         className={
           complited
@@ -34,7 +34,7 @@ const Todo = ({ car, handleDeletetodo, complited, handleComplitedtodo, key}) => 
           </button>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

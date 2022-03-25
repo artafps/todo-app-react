@@ -3,29 +3,34 @@ import Header from "./component/Header";
 import Todo from "./component/Todo";
 
 function App() {
-  const [textCar, setTextCar] = useState();
-  const [todo, settodo] = useState([]);
+  const [textCar, setTextCar] = useState("");
+  const [todos, settodo] = useState([]);
   const handleSubmit = () => {
-    const carttodo = [...todo];
-    const data = { id: `${carttodo.length}`, name: textCar, complited: false };
-    carttodo.push(data);
-    setTextCar("");
     if (textCar !== "" && textCar !== " ") {
+      const carttodo = [...todos];
+      const data = {
+        id: `${Math.floor(Math.random() * 10000)}`,
+        name: textCar,
+        complited: false,
+      };
+      carttodo.push(data);
+      setTextCar("");
+
       settodo(carttodo);
     }
   };
   const handleDeletetodo = (id) => {
-    const carttodo = [...todo];
-    const cartupdate = carttodo.filter((e) => {
-      if (e.id !== id) {
-        return e;
+    const carttodo = [...todos];
+    const cartupdate = carttodo.filter((item) => {
+      if (item.id !== id) {
+        return item;
       }
     });
     settodo(cartupdate);
   };
   const handleComplitedtodo = (id) => {
-    const carttodo = [...todo];
-    const cartindex = carttodo.findIndex((e) => e.id == id);
+    const carttodo = [...todos];
+    const cartindex = carttodo.findIndex((e) => e.id === id);
     const cartfind = carttodo[cartindex];
     cartfind.complited = !cartfind.complited;
     carttodo[cartindex] = cartfind;
@@ -49,10 +54,10 @@ function App() {
           submit
         </button>
       </div>
-      {todo.map((e) => {
+      {todos.map((e) => {
         return (
           <Todo
-            key={e.id}
+            idprop={e.id}
             car={e.name}
             complited={e.complited}
             handleDeletetodo={() => {
