@@ -33,9 +33,7 @@ function App() {
     carttodo[cartindex] = cartfind;
     settodo(carttodo);
   };
-  const handlemic = () => {
-    console.log("mic");
-  };
+  
   return (
     <div>
       <Header>

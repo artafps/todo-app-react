@@ -6,7 +6,7 @@ function Header({ children }) {
   };
   return (
     <div className="box-header" role="alert">
-      Todo App / In React.js
+      <div> Todo App / In React.js</div>
       <div>{children}</div>
       <button className="btn btn-primary" onClick={handlemic}>
         on/of microphone
