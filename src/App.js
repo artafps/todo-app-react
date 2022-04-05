@@ -89,9 +89,9 @@ function App() {
           </button>
         </div>
       </Header>
-        {transcript !== "" ? (
-          <div className="box-text-les">{transcript}</div>
-        ) : null}
+      {transcript !== "" ? (
+        <div className="box-text-les">{transcript}</div>
+      ) : null}
       <br />
 
       <div>
@@ -117,6 +117,7 @@ function App() {
         <div className="or or--x" aria-role="presentation">
           complited todos
         </div>
+
         {todos
           .reverse()
           .filter((item) => item.complited === true)
@@ -135,6 +136,20 @@ function App() {
               />
             );
           })}
+        <br />
+        <div className="or or--x" aria-role="presentation">
+          Documents
+        </div>
+        <br />
+        <div
+          className="alert alert-light shadow  text-center mb-3 p-5"
+          style={{ width: "90%", margin: "auto", borderRadius: 10 }}
+          role="alert"
+        >
+          اسم کار + تنظیم کن
+          <br />
+          پاک کن
+        </div>
       </div>
     </div>
   );
