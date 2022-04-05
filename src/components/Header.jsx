@@ -1,4 +1,5 @@
 import React from "react";
+import { en, fa } from "./../language";
 
 function Header({ children, handlemic, listening }) {
   return (
@@ -17,9 +18,13 @@ function Header({ children, handlemic, listening }) {
         Todo App / In React.js
       </div>
       <div>{children}</div>
-      <button className="btn btn-primary" onClick={handlemic}>
-        on/of microphone
-      </button>
+      <div>
+        <button className="btn btn-primary mx-3" onClick={handlemic}>
+          on/of microphone
+        </button>
+        <button className="btn btn-light mx-3" >Persian</button>
+        <button className="btn btn-light">English</button>
+      </div>
     </div>
   );
 }
