@@ -45,7 +45,7 @@ function App() {
   console.log(transcript);
   let set = lang === "fa" ? "تنظیم کن" : "make setting";
   let deleted = lang === "fa" ? "پاک کن" : "make delete";
-  let off = lang === "fa" ? "میکروفن را خاموش کن" : "make off microphone";
+  let off = lang === "fa" ? "میکروفون را خاموش کن" : "make off microphone";
   if (transcript.includes(set)) {
     console.log(transcript.split("تنظیم کن")[0]);
     if (textCar !== transcript.split("تنظیم کن")[0]) {
