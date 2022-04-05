@@ -2,14 +2,21 @@ body{
   margin: auto;
   align-items: center;
   text-align: center;
-
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: larger;
+}
+.text-Head{
+  cursor: pointer;
 }
 .todobox{
-  width: 50%;
+  width: 90%;
   margin: auto;
   margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
-  text-align: center;
   font-size: larger;
   font-weight: 500;
 }
@@ -24,4 +31,95 @@ body{
   align-items: center;
   justify-content: space-around;
   box-shadow: 0px 0px 20px -10px  rgb(29, 32, 71);
+}
+.shadow{
+  box-shadow: 0px 0px 20px -10px  rgb(29, 32, 71);
+}
+.or--y {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+
+.or--y::before,
+.or--y::after {
+  position: absolute;
+  border-left: 1px solid #ccc;
+  height: calc(50% - 0.85em);
+  left: 50%;
+  margin-left: -1px;
+}
+
+/* ::before on top */
+.or--y::before {
+  top: 0;
+}
+
+/* ::after on bottom */
+.or--y::after {
+  bottom: 0;
+}
+
+/* Horizontal */
+.or--x::before,
+.or--x::after {
+  position: relative;
+  border-top: 1px solid #ccc;
+  display: inline-block;
+  vertical-align: middle;
+  width: 45%;
+  margin-bottom: 0.15em;
+  overflow: hidden;
+}
+
+.or--x::before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.or--x::after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+/* Demo styles */
+.demo {
+  margin: 4em 1em;
+  text-align: center;
+}
+
+.demo .or {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #828282;
+  font-size: 0.75em;
+  margin: 4em auto;
+}
+
+
+
+
+.or::before,
+.or::after {
+  content: "";
+}
+
+
+.box-text-les{
+  width: 400px;
+  text-align: right;
+  position: absolute;
+  z-index: 10;
+  background-color: rgb(255, 255, 255);
+  margin: 20px;
+  margin-top: 0px;
+  height: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 30px;
+  min-height: 100px;
+  box-shadow: 0px 30px 50px -10px  rgba(29, 32, 71, 0.19);
 }
