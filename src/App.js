@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Header from "./component/Header";
-import Todo from "./component/Todo";
+import Header from "./components/Header";
+import Todo from "./components/Todo";
 
 function App() {
   const [textCar, setTextCar] = useState("");
@@ -15,14 +15,13 @@ function App() {
       };
       carttodo.push(data);
       setTextCar("");
-
       settodo(carttodo);
     }
   };
   const handleDeletetodo = (id) => {
     const carttodo = [...todos];
     const cartupdate = carttodo.filter((item) => {
-        return item.id !== id;
+      return item.id !== id;
     });
     settodo(cartupdate);
   };
@@ -34,39 +33,44 @@ function App() {
     carttodo[cartindex] = cartfind;
     settodo(carttodo);
   };
+  const handlemic = () => {
+    console.log("mic");
+  };
   return (
     <div>
-      <Header />
-      <div
-        className="input-group input-group-width"
-        role="group"
-        aria-label="Basic example"
-      >
-        <input
-          type="text"
-          className="form-control"
-          value={textCar}
-          onChange={(e) => setTextCar(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={handleSubmit}>
-          submit
-        </button>
-      </div>
-      {todos.map((e) => {
-        return (
-          <Todo
-            idprop={e.id}
-            car={e.name}
-            complited={e.complited}
-            handleDeletetodo={() => {
-              handleDeletetodo(e.id);
-            }}
-            handleComplitedtodo={() => {
-              handleComplitedtodo(e.id);
-            }}
+      <Header>
+        <div class="input-group">
+          <input
+            type="text"
+            style={{ width: 200 }}
+            className="form-control"
+            value={textCar}
+            onChange={(e) => setTextCar(e.target.value)}
           />
-        );
-      })}
+          <input type="time" className="form-control" />
+          <button className="btn btn-primary" onClick={handleSubmit}>
+            submit
+          </button>
+        </div>
+        
+      </Header>
+      <div>
+        {todos.map((e) => {
+          return (
+            <Todo
+              idprop={e.id}
+              car={e.name}
+              complited={e.complited}
+              handleDeletetodo={() => {
+                handleDeletetodo(e.id);
+              }}
+              handleComplitedtodo={() => {
+                handleComplitedtodo(e.id);
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
