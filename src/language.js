@@ -17,5 +17,5 @@ export const fa = {
   langEN: "English",
   complitedtodos: "کارهای انجام شده",
   Documents: "آموزش ها",
-  txtDocuments: "کار + تنظیم کن / پاک کن / خاموش کن",
+  txtDocuments: "کار + تنظیم کن / پاک کن / میکروفن را خاموش کن",
 };

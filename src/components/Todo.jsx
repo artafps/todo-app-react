@@ -69,10 +69,12 @@ const Todo = ({
                     textAlign: lang === "fa" ? "right" : "left",
                     textDecoration: "line-through",
                     paddingRight: 10,
+                    width: "70%",
                   }
                 : {
                     textAlign: lang === "fa" ? "right" : "left",
                     paddingRight: 10,
+                    width: "70%",
                   }
             }
           >
