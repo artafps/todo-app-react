@@ -1,7 +1,14 @@
 import React from "react";
 import { en, fa } from "./../language";
 
-function Header({ children, handlemic, listening }) {
+function Header({
+  children,
+  handlemic,
+  listening,
+  lang,
+  changefatoen,
+  changeentofa,
+}) {
   return (
     <div className="box-header" role="alert">
       <div className="text-Head">
@@ -15,15 +22,29 @@ function Header({ children, handlemic, listening }) {
             <span class="visually-hidden">Loading...</span>
           </div>
         ) : null}
-        Todo App / In React.js
+        {lang === "fa" ? fa.textHeader : en.textHeader}
       </div>
       <div>{children}</div>
       <div>
         <button className="btn btn-primary mx-3" onClick={handlemic}>
-          on/of microphone
+          {lang === "fa" ? fa.micbutton : en.micbutton}
         </button>
-        <button className="btn btn-light mx-3" >Persian</button>
-        <button className="btn btn-light">English</button>
+        <button
+          className={
+            lang === "fa" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
+          }
+          onClick={changeentofa}
+        >
+          {lang === "fa" ? fa.langFA : en.langFA}
+        </button>
+        <button
+          className={
+            lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
+          }
+          onClick={changefatoen}
+        >
+          {lang === "fa" ? fa.langEN : en.langEN}
+        </button>
       </div>
     </div>
   );

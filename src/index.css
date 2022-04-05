@@ -2,7 +2,7 @@ body{
   margin: auto;
   align-items: center;
   text-align: center;
-  font-family: 'Baloo Tamma 2', cursive;
+  font-family: 'Baloo Tamma 2', cursive,"tahoma";
   font-size: larger;
 }
 .text-Head{
@@ -110,7 +110,6 @@ body{
 
 .box-text-les{
   width: 400px;
-  text-align: right;
   position: absolute;
   z-index: 10;
   background-color: rgb(255, 255, 255);

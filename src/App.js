@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { en, fa } from "./language";
 
 function App() {
   const [textCar, setTextCar] = useState("");
-  const [time, settime] = useState("");
   const [todos, settodo] = useState([]);
-  const [status, setstatus] = useState([]);
+  const [lang, setlang] = useState("fa");
+
+  const [, setstatus] = useState([]);
   const handleSubmit = () => {
     if (textCar !== "" && textCar !== " ") {
       const carttodo = [...todos];
@@ -17,7 +19,6 @@ function App() {
         id: `${Math.floor(Math.random() * 10000)}`,
         name: textCar,
         complited: false,
-        clock: "00:00",
       };
       carttodo.push(data);
       setTextCar("");
@@ -40,15 +41,12 @@ function App() {
     settodo(carttodo);
   };
 
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
   console.log(transcript);
-
-  if (transcript.includes("تنظیم کن")) {
+  let set = lang === "fa" ? "تنظیم کن" : "make setting";
+  let deleted = lang === "fa" ? "پاک کن" : "make delete";
+  let off = lang === "fa" ? "خاموش کن" : "make off microphone";
+  if (transcript.includes(set)) {
     console.log(transcript.split("تنظیم کن")[0]);
     if (textCar !== transcript.split("تنظیم کن")[0]) {
       setTextCar(transcript.split("تنظیم کن")[0]);
@@ -58,7 +56,13 @@ function App() {
       setTextCar("");
     }
   }
-  if (transcript.includes("پاک کن")) {
+
+  if (transcript.includes(deleted)) {
+    setTextCar("");
+    resetTranscript();
+  }
+  if (transcript.includes(off)) {
+    SpeechRecognition.stopListening();
     setTextCar("");
     resetTranscript();
   }
@@ -67,15 +71,36 @@ function App() {
       SpeechRecognition.stopListening();
       setstatus(false);
     } else {
-      SpeechRecognition.startListening({ language: "fa-IR", continuous: true });
+      SpeechRecognition.startListening({
+        language: lang === "fa" ? "fa-IR" : "en-US",
+        continuous: true,
+      });
       setstatus(true);
     }
     resetTranscript();
   };
 
+  useEffect(() => {
+    const language = localStorage.getItem("language");
+    if (language !== null) setlang(language);
+  }, []);
+  const changeentofa = () => {
+    localStorage.setItem("language", "fa");
+    setlang("fa");
+  };
+  const changefatoen = () => {
+    localStorage.setItem("language", "en");
+    setlang("en");
+  };
   return (
     <div>
-      <Header listening={listening} handlemic={handlemic}>
+      <Header
+        listening={listening}
+        handlemic={handlemic}
+        lang={lang}
+        changeentofa={changeentofa}
+        changefatoen={changefatoen}
+      >
         <div class="input-group">
           <input
             type="text"
@@ -85,12 +110,17 @@ function App() {
             onChange={(e) => setTextCar(e.target.value)}
           />
           <button className="btn btn-primary" onClick={handleSubmit}>
-            submit
+            {lang === "fa" ? fa.submit : en.submit}
           </button>
         </div>
       </Header>
       {transcript !== "" ? (
-        <div className="box-text-les">{transcript}</div>
+        <div
+          className="box-text-les"
+          style={lang === "fa" ? { textAlign: "right" } : { textAlign: "left" }}
+        >
+          {transcript}
+        </div>
       ) : null}
       <br />
 
@@ -101,8 +131,9 @@ function App() {
           .map((e) => {
             return (
               <Todo
+                lang={lang}
                 idprop={e.id}
-                car={e.name}
+                text={e.name}
                 complited={e.complited}
                 handleDeletetodo={() => {
                   handleDeletetodo(e.id);
@@ -114,8 +145,8 @@ function App() {
             );
           })}
         <br />
-        <div className="or or--x" aria-role="presentation">
-          complited todos
+        <div className="or or--x">
+          {lang === "fa" ? fa.complitedtodos : en.complitedtodos}
         </div>
 
         {todos
@@ -124,8 +155,9 @@ function App() {
           .map((e) => {
             return (
               <Todo
+                lang={lang}
                 idprop={e.id}
-                car={e.name}
+                text={e.name}
                 complited={e.complited}
                 handleDeletetodo={() => {
                   handleDeletetodo(e.id);
@@ -137,8 +169,8 @@ function App() {
             );
           })}
         <br />
-        <div className="or or--x" aria-role="presentation">
-          Documents
+        <div className="or or--x">
+          {lang === "fa" ? fa.Documents : en.Documents}
         </div>
         <br />
         <div
@@ -146,9 +178,7 @@ function App() {
           style={{ width: "90%", margin: "auto", borderRadius: 10 }}
           role="alert"
         >
-          اسم کار + تنظیم کن
-          <br />
-          پاک کن
+          {lang === "fa" ? fa.txtDocuments : en.txtDocuments}
         </div>
       </div>
     </div>
