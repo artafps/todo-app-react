@@ -1,7 +1,6 @@
 export const en = {
-  textHeader: "Todo App / In React.js",
+  textHeader: "ARTA Todo",
   submit: "submit",
-  micbutton: "on/of microphone",
   langFA: "فارسی",
   langEN: "English",
   complitedtodos: "complitedtodos",
@@ -10,9 +9,8 @@ export const en = {
     "todo.... + make setting / make delete => delete type box / make off microphon",
 };
 export const fa = {
-  textHeader: "اپلیکیشن تودو | در ریکت",
+  textHeader: "آرتا اپلیکیشن",
   submit: "افزودن",
-  micbutton: "خاموش / روشن میکروفن",
   langFA: "فارسی",
   langEN: "English",
   complitedtodos: "کارهای انجام شده",

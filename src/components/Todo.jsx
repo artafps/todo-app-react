@@ -1,102 +1,94 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 
-const Todo = ({
-  text,
-  handleDeletetodo,
-  complited,
-  handleComplitedtodo,
-  idprop,
-  lang,
-}) => {
+const Todo = (props) => {
   return (
-    <Fragment key={idprop}>
-      {lang === "fa" ? (
+    <Fragment key={props.idprop}>
+      {props.lang === "fa" ? (
         <div
           className={
-            complited
-              ? "alert alert-success shadow todobox "
-              : "alert alert-light shadow todobox"
+            props.complited
+              ? "alert alert-light  border-rightW todobox "
+              : "alert alert-light  border-rightS todobox"
           }
           role="alert"
         >
-          <div>
-            <button
-              className={
-                complited ? "btn btn-light m-2 " : "btn btn-success m-2 "
-              }
-              onClick={handleComplitedtodo}
-            >
-              {lang === "fa" ? "انجام شد" : "Complited"}
-            </button>
-
-            <button
-              className="btn btn-danger m-2  align-items-left"
-              onClick={handleDeletetodo}
-            >
-              {lang === "fa" ? "حذف" : "Delete"}
-            </button>
-          </div>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            style={{ cursor: "pointer", borderRadius: "50px" }}
+            checked={props.complited ? true : false}
+            id="flexCheckDefault"
+            onClick={props.handleComplitedtodo}
+          />
           <div
+            className="text"
             style={
-              complited
+              props.complited
                 ? {
-                    textAlign: lang === "fa" ? "right" : "left",
+                    textAlign: props.lang === "fa" ? "right" : "left",
                     textDecoration: "line-through",
-                    paddingRight: 10,
+                    width: "65%",
                   }
                 : {
-                    textAlign: lang === "fa" ? "right" : "left",
-                    paddingRight: 10,
+                    textAlign: props.lang === "fa" ? "right" : "left",
+                    width: "65%",
                   }
             }
           >
-            {text}
+            {props.text}
           </div>
+          <div className="text"> {" "+"|"+" "}</div>
+          <div className="text">{props.idprop}</div>
+          <button
+            type="button"
+            onClick={props.handleDeletetodo}
+            className="btn-close closeicone"
+            aria-label="Close"
+          ></button>
         </div>
       ) : (
         <div
           className={
-            complited
-              ? "alert alert-success shadow todobox "
-              : "alert alert-light shadow todobox"
+            props.complited
+              ? "alert alert-light  border-leftW todobox "
+              : "alert alert-light  border-leftS todobox"
           }
           role="alert"
         >
+          <button
+            type="button"
+            onClick={props.handleDeletetodo}
+            className="btn-close closeicone"
+            aria-label="Close"
+          ></button>
+          <div className="text">{props.idprop}</div>
+          <div className="text"> {" "+"|"+" "}</div>
           <div
+            className="text"
             style={
-              complited
+              props.complited
                 ? {
-                    textAlign: lang === "fa" ? "right" : "left",
+                    textAlign: props.lang === "fa" ? "right" : "left",
                     textDecoration: "line-through",
-                    paddingRight: 10,
-                    width: "70%",
+
+                    width: "65%",
                   }
                 : {
-                    textAlign: lang === "fa" ? "right" : "left",
-                    paddingRight: 10,
-                    width: "70%",
+                    textAlign: props.lang === "fa" ? "right" : "left",
+                    width: "65%",
                   }
             }
           >
-            {text}
+            {props.text}
           </div>
-          <div>
-            <button
-              className={
-                complited ? "btn btn-light m-2 " : "btn btn-success m-2 "
-              }
-              onClick={handleComplitedtodo}
-            >
-              {lang === "fa" ? "انجام شد" : "Complited"}
-            </button>
-
-            <button
-              className="btn btn-danger m-2  align-items-left"
-              onClick={handleDeletetodo}
-            >
-              {lang === "fa" ? "حذف" : "Delete"}
-            </button>
-          </div>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            style={{ cursor: "pointer", borderRadius: "50px" }}
+            checked={props.complited ? true : false}
+            id="flexCheckDefault"
+            onClick={props.handleComplitedtodo}
+          />
         </div>
       )}
     </Fragment>
