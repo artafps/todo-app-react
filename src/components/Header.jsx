@@ -72,7 +72,7 @@ function Header() {
   }
   if (transcript.includes(MOVETODOAPP) || transcript.includes(MOVETODOAPP2)) {
     resetTranscript();
-    navigate("/app");
+    navigate("/");
   }
 
   if (transcript.includes(MOVEDOCUMENT)) {
@@ -126,7 +126,7 @@ function Header() {
           <div
             className="text-Head"
             onClick={() => {
-              navigate("/app");
+              navigate("/");
             }}
           >
             {" "}

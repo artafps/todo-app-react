@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Todo from "../components/Todo";
 
 import Mainlayout from "./../layout/MainLayout";
-import Tabs from "./../components/common/tabs";
+import Tab from "../components/common/Tab";
 import { CloseSquare, CalendarAdd, Send2 } from "iconsax-react";
 import Lottie from "lottie-react";
 import todo from "../lottefile/56438-man-with-task-list.json";
@@ -25,7 +25,7 @@ import {
 } from "./../redux/actions/counter";
 function Application() {
   const [lang, setlang] = useState([]);
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos.reverse());
   const taxt = useSelector((state) => state.txttodo);
   const taxtcategory = useSelector((state) => state.txtcategory);
   const categorys = useSelector((state) => state.categorys);
@@ -87,7 +87,7 @@ function Application() {
               <br />
               {todos.length > 0 ? (
                 todos
-                  .reverse()
+                  
                   .filter(({ idsection }) => {
                     return idsection === categoryId;
                   })
@@ -111,7 +111,7 @@ function Application() {
                     );
                   })
               ) :null}
-              {todos.reverse().filter(({ idsection }) => {
+              {todos.filter(({ idsection }) => {
                 return idsection === categoryId;
               }).length > 0 ? null : (
                 <Lottie
@@ -123,7 +123,7 @@ function Application() {
 
               {todos.length > 0
                 ? todos
-                    .reverse()
+                    
                     .filter(({ idsection }) => {
                       return idsection === categoryId;
                     })
@@ -178,7 +178,7 @@ function Application() {
           >
             {categorys.map((item) => {
               return (
-                <Tabs
+                <Tab
                   text={item.name}
                   onclick={() => dispatch(set_category(item.id))}
                   selector={categoryId === item.id ? true : false}
@@ -194,15 +194,15 @@ function Application() {
                       }}
                     />
                   }
-                ></Tabs>
+                ></Tab>
               );
             })}
-            <Tabs
+            <Tab
               text={"default"}
               selector={categoryId == "default" ? true : false}
               onclick={() => dispatch(set_category("default"))}
-            ></Tabs>
-            <Tabs
+            ></Tab>
+            <Tab
               datatoggle="modal"
               datatarget="#exampleModalCenter"
               classNameNew={"dashed"}
@@ -211,7 +211,7 @@ function Application() {
                   <CalendarAdd size="32" color="#0d6efd" variant="Bulk" /> Add
                 </div>
               }
-            ></Tabs>
+            ></Tab>
           </div>
         </div>
 
