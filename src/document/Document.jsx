@@ -1,29 +1,24 @@
 import React from "react";
-import { fa } from "../language";
-import { en } from "./../language";
 import Mainlayout from "./../layout/MainLayout";
 import data from "../lottefile/42991-donation-box.json";
 import Lottie from "lottie-react";
+import { style_Aleart_SETANDDOC } from './../styles/module/style.position';
 const Document = () => {
-  const lang = localStorage.getItem("language");
   return (
     <Mainlayout>
-      مستندات
-      <br />
-      <br />
       <div
         className="alert alert-light shadow  text-center mb-3 p-5"
-        style={{ width: "90%", margin: "auto", borderRadius: 10 }}
+        style={style_Aleart_SETANDDOC()}
         role="alert"
       >
-        {lang === "fa" ? fa.txtDocuments : en.txtDocuments}
+        مستندات
       </div>
       <br />
       <a href="https://zarinp.al/artafallahpoor">
         <Lottie
           animationData={data}
           style={{
-            width: 1040,
+            width: "100%",
             height: 340,
             margin: "auto",
             cursor: "pointer",

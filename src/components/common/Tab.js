@@ -1,7 +1,11 @@
 import React, { Fragment } from "react";
+import {
+  tabs_Direction,
+  tabs_DirectionText,
+  tabs_Selector,
+} from "../../styles/module/style.position";
 const Tab = ({
   text,
-  actves,
   icon,
   onclick,
   datatoggle,
@@ -11,16 +15,24 @@ const Tab = ({
 }) => {
   return (
     <Fragment>
-      <div className={actves} data-toggle={datatoggle} data-target={datatarget}>
-        <div
-          className={`tabs2 ${classNameNew}`}
-          style={
-            selector ? { borderLeft: "rgb(255, 43, 96) 10px solid" } : null
-          }
-          onMouseEnter={onclick}
-        >
-          <div className="text-tab">{text}</div> {icon}
-        </div>
+      <div data-toggle={datatoggle} data-target={datatarget}>
+        {"right" === "right" ? (
+          <div
+            className={tabs_Direction("right", classNameNew)}
+            style={tabs_Selector("right", selector)}
+          >
+            <div className="m-2"> {icon} </div>
+            <div onClick={onclick} className={tabs_DirectionText("right")}>{text}</div>
+          </div>
+        ) : (
+          <div
+            className={tabs_Direction("left", classNameNew)}
+            style={tabs_Selector("left", selector)}
+          >
+            <div  onClick={onclick} className={tabs_DirectionText("left")}>{text}</div>
+            <div className="m-2"> {icon} </div>
+          </div>
+        )}
       </div>
     </Fragment>
   );

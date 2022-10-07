@@ -1,15 +1,16 @@
-import React, { Fragment, useRef } from "react";
+import { CloseSquare } from "iconsax-react";
+import React, { Fragment } from "react";
+import {
+  style_TodoComplited,
+  style_TodoComplitedText,
+} from "../styles/module/style.position.jsx";
 
 const Todo = (props) => {
   return (
     <Fragment key={props.idprop}>
-      {props.lang === "fa" ? (
+      {"left" === "right" ? (
         <div
-          className={
-            props.complited
-              ? "alert alert-light  border-rightW todobox "
-              : "alert alert-light  border-rightS todobox"
-          }
+          className={style_TodoComplited(props.complited, "right")}
           role="alert"
         >
           <input
@@ -22,62 +23,38 @@ const Todo = (props) => {
           />
           <div
             className="text"
-            style={
-              props.complited
-                ? {
-                    textAlign: props.lang === "fa" ? "right" : "left",
-                    textDecoration: "line-through",
-                    width: "65%",
-                  }
-                : {
-                    textAlign: props.lang === "fa" ? "right" : "left",
-                    width: "65%",
-                  }
-            }
+            style={style_TodoComplitedText(props.complited, "right")}
           >
             {props.text}
           </div>
-          <div className="text"> {" "+"|"+" "}</div>
+          <div className="text"> {" | "}</div>
           <div className="text">{props.idprop}</div>
+
           <button
             type="button"
             onClick={props.handleDeletetodo}
-            className="btn-close closeicone"
-            aria-label="Close"
-          ></button>
+            className="btn closeicone p-0"
+          >
+            <CloseSquare size="34" color="#f47373" variant="Bulk" />
+          </button>
         </div>
       ) : (
         <div
-          className={
-            props.complited
-              ? "alert alert-light  border-leftW todobox "
-              : "alert alert-light  border-leftS todobox"
-          }
+          className={style_TodoComplited(props.complited, "left")}
           role="alert"
         >
           <button
             type="button"
             onClick={props.handleDeletetodo}
-            className="btn-close closeicone"
-            aria-label="Close"
-          ></button>
+            className="btn closeicone p-0"
+          >
+            <CloseSquare size="34" color="#f47373" variant="Bulk" />
+          </button>
           <div className="text">{props.idprop}</div>
-          <div className="text"> {" "+"|"+" "}</div>
+          <div className="text"> {" | "}</div>
           <div
             className="text"
-            style={
-              props.complited
-                ? {
-                    textAlign: props.lang === "fa" ? "right" : "left",
-                    textDecoration: "line-through",
-
-                    width: "65%",
-                  }
-                : {
-                    textAlign: props.lang === "fa" ? "right" : "left",
-                    width: "65%",
-                  }
-            }
+            style={style_TodoComplitedText(props.complited, "left")}
           >
             {props.text}
           </div>

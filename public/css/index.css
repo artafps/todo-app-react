@@ -6,7 +6,7 @@ body {
   margin: auto;
   align-items: center;
   text-align: center;
-  font-family: IranSans, Tahoma ;
+  font-family: IranSans, Tahoma;
   font-size: larger;
 }
 .text-Head {
@@ -28,56 +28,51 @@ body {
   font-weight: 500;
 }
 
-.draggable-list__item {
-  padding: 10px 0;
-  border-top: 2px solid transparent;
+.categorybox {
+  width: 90%;
+  margin: auto;
+  margin-top: 0px;
+  display: flex;
+  z-index: 3;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  font-size: larger;
+  margin-top: 5px;
+  border-radius: 10px;
+  font-weight: 500;
 }
 
-.draggable-list__item * {
-  pointer-events: none;
-}
-
-.draggable-list__item.dragstart {
-  opacity: 0.5;
-}
-
-.draggable-list__item.dragover {
-  border-top-color: green;
-}
-.closeicone {
-  background: transparent
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
-    center/0.5em auto no-repeat;
-}
-.border-leftW {
+.border-lefts {
   border-left: rgb(43, 135, 255) 10px solid;
   background-color: #f5f5f5;
 }
-.border-leftS {
+.border-lefte {
   border-left: rgb(255, 216, 43) 10px solid;
   background-color: #f5f5f5;
 }
-.border-rightW {
+.border-rights {
   border-right: rgb(43, 135, 255) 10px solid;
   background-color: #f5f5f5;
 }
-.border-rightS {
+.border-righte {
   border-right: rgb(255, 216, 43) 10px solid;
   background-color: #f5f5f5;
 }
-.border-leftW:active {
+.border-lefte:active {
   border-left: rgb(255, 43, 107) 10px solid;
   background-color: #f5f5f5;
 }
-.border-leftS:active {
+.border-lefts:active {
   border-left: rgb(255, 43, 107) 10px solid;
   background-color: #f5f5f5;
 }
-.border-rightW:active {
+.border-righte:active {
   border-right: rgb(255, 43, 107) 10px solid;
   background-color: #f5f5f5;
 }
-.border-rightS:active {
+.border-rights:active {
   border-right: rgb(255, 43, 107) 10px solid;
   background-color: #f5f5f5;
 }
@@ -212,21 +207,26 @@ body {
   border-radius: 5px;
 }
 .dashed {
-  border: #828282 dashed 1px;
+  border-bottom: #828282 dashed 1px;
+  border-top: #828282 dashed 1px;
+}
+.left-dashed {
+  border-left: #828282 dashed 1px;
+}
+.right-dashed {
+  border-right: #828282 dashed 1px;
 }
 .tabs2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height: 50px , auto;
+  height:  auto;
   font-size: 15px;
   margin: auto;
   cursor: pointer;
-  padding: 15px;
   border-radius: 10px;
-  background: #e3e5e81f;
-  border-left: rgb(43, 135, 255) 10px solid;
+  background: #f5f5f5;
   margin-top: 7px;
   margin-bottom: 7px;
   color: rgb(61, 61, 61) !important;
@@ -234,66 +234,31 @@ body {
 }
 .tabs2:hover {
   width: 90%;
-  height: 50px , auto;
+  height: 50px, auto;
   margin: auto;
   border-radius: 10px;
   margin-top: 7px;
   margin-bottom: 7px;
-  border-left: rgb(255, 43, 96) 10px solid;
+  border-color: rgb(255, 43, 107);
   background: #e3e5e8;
 }
-.text-tab{
+.text-tabL {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   text-align: left;
   width: 80%;
+  padding: 15px;
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
 }
-.activetabs {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  width: 220px;
-  height: 40px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  margin-left: 15px;
-  color: black !important;
-  font-family: iransans;
-  background: #e3e5e8;
-}
-.tabimg {
-  width: 30px;
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.boxhead {
-  width: 220px;
-  height: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  margin-left: 15px;
-  font-family: iransans;
-  margin-bottom: 17.5px;
-}
-.headertext {
-  font-family: iransans;
-  color: rgb(56, 56, 56) !important;
-  font-size: 14px;
-  float: right !important;
-  margin-right: 5px;
-  margin-top: 5px;
-}
-.tabtext {
-  font-size: 14px;
-  color: #000000;
-  margin-right: 3px;
-}
-.navtabtext {
-  font-size: 13px;
-  color: #000000;
-  margin-right: 10px;
+.text-tabR {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  text-align: right;
+  width: 80%;
+  padding: 15px;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
 }

@@ -17,6 +17,7 @@ import voice from "../lottefile/15238-voice-animation.json";
 import { new_todo } from "../redux/actions/counter";
 import { change_text } from "./../redux/actions/counter";
 import { useDispatch } from "react-redux";
+import { color_Icone, style_transcript } from "../styles/module/style.position";
 function Header() {
   const [lang, setlang] = useState();
   const [textCar, setTextCar] = useState();
@@ -122,27 +123,16 @@ function Header() {
   return (
     <Fragment>
       <div className="box-header" role="alert">
-        {windowSize.innerWidth > 600 ? (
-          <div
-            className="text-Head"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            {" "}
-            {lang === "fa" ? fa.textHeader : en.textHeader}
-          </div>
-        ) : (
-          <div
-            className="text-Head"
-            onClick={() => {
-              navigate("/app");
-            }}
-          >
-            {" "}
-            {lang === "fa" ? fa.textHeader : en.textHeader}
-          </div>
-        )}
+        <div
+          className="text-Head"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          {" "}
+          Todo App
+        </div>
+
         <div>
           <button className="btn btn-light mx-1" onClick={handlemic}>
             {listening ? (
@@ -151,10 +141,10 @@ function Header() {
                   animationData={voice}
                   style={{ width: 34, height: 34, marginTop: -6 }}
                 />
-                <Microphone2 size="24" color="#0d6efd" />
+                <Microphone2 size="24" color={color_Icone()} />
               </div>
             ) : (
-              <MicrophoneSlash size="24" color="#0d6efd" />
+              <MicrophoneSlash size="24" color={color_Icone()} />
             )}
           </button>
           {windowSize.innerWidth > 600 ? (
@@ -170,7 +160,7 @@ function Header() {
                 style={
                   windowSize.innerWidth > 600 ? { marginLeft: "5px" } : null
                 }
-                color="#0d6efd"
+                color={color_Icone()}
               />
             </button>
           ) : null}
@@ -187,7 +177,7 @@ function Header() {
                 style={
                   windowSize.innerWidth > 600 ? { marginLeft: "5px" } : null
                 }
-                color="#0d6efd"
+                color={color_Icone()}
               />
             </button>
           ) : null}
@@ -203,19 +193,14 @@ function Header() {
                 style={
                   windowSize.innerWidth > 1000 ? { marginLeft: "5px" } : null
                 }
-                color="#0d6efd"
+                color={color_Icone()}
               />
             </button>
-          ) : (
-            null
-          )}
+          ) : null}
         </div>
       </div>
       {transcript !== "" ? (
-        <div
-          className="box-text-les"
-          style={lang === "fa" ? { textAlign: "right" } : { textAlign: "left" }}
-        >
+        <div className="box-text-les" style={style_transcript("right")}>
           {transcript}
         </div>
       ) : null}

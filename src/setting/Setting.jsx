@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { fa } from "../language";
-import { en } from "../language";
 import Mainlayout from "./../layout/MainLayout";
+import {
+  styele_ClassName_btn_lang,
+  styele_ClassName_them,
+  style_Aleart_SETANDDOC,
+} from "./../styles/module/style.position";
 
 const Setting = () => {
-  const [lang, setlang] = useState();
-  const changeentofa = () => {
-    localStorage.setItem("language", "fa");
-    setlang("fa");
-  };
-  const changefatoen = () => {
-    localStorage.setItem("language", "en");
-    setlang("en");
-  };
+  const [language, setlang] = useState();
+  const [them, setthem] = useState();
+
   useEffect(() => {
     const language = localStorage.getItem("language");
     if (language !== null) setlang(language);
@@ -20,85 +17,45 @@ const Setting = () => {
 
   return (
     <Mainlayout>
-      تغییر زبان
-      <br />
-      <br />
-      <button
-        className={
-          lang === "fa" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changeentofa}
+      <div
+        className="alert alert-light shadow  text-center mb-3 p-5"
+        style={style_Aleart_SETANDDOC()}
+        role="alert"
       >
-        فارسی
-      </button>
-      <button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
+        تغییر زبان
+        <br />
+        <br />
+        <button className={styele_ClassName_btn_lang(language, "fa")}>
+          فارسی
+        </button>
+        <button className={styele_ClassName_btn_lang(language, "en")}>
+          English
+        </button>
+        <button className={styele_ClassName_btn_lang(language, "Ру")}>
+          Русский
+        </button>
+        <button className={styele_ClassName_btn_lang(language, "俄语")}>
+          俄语
+        </button>
+        <button className={styele_ClassName_btn_lang(language, "俄語")}>
+          俄語
+        </button>
+        <button className={styele_ClassName_btn_lang(language, "arb")}>
+          العربی
+        </button>
+      </div>
+      <div
+        className="alert alert-light shadow  text-center mb-3 p-5"
+        style={style_Aleart_SETANDDOC()}
+        role="alert"
       >
-        english
-      </button>
-      <button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        Русский
-      </button>
-      <button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        俄语
-      </button>
-      <button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        俄語
-      </button>
-      <br />
-      <br /> تغییر تم
-      <br />
-      <br /><button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        dark
-      </button><button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        light
-      </button><br />
-      <br /> تغییر نوشتار
-      <br />
-      <br />
-      <button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        right
-      </button><button
-        className={
-          lang === "en" ? "btn btn-primary mx-3" : "btn btn-light mx-3"
-        }
-        onClick={changefatoen}
-      >
-        left
-      </button>
+        تغییر تم
+        <br />
+        <br />
+        <button className={styele_ClassName_them(them, "dark")}>dark</button>
+        <button className={styele_ClassName_them(them, "light")}>light</button>
+        <br />
+      </div>
     </Mainlayout>
   );
 };

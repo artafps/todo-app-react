@@ -8,13 +8,19 @@ import {
   delete_category_mtod,
   new_category,
   reload_category_section,
-  set_category,reload_category
+  set_category,
+  reload_category,
 } from "../redux/actions/counter";
-import { CalendarAdd, CloseSquare } from "iconsax-react";
-import Tab from './../components/common/Tab';
+import {
+  CalendarAdd,
+  CloseSquare,
+  Setting2,
+  DocumentText,
+} from "iconsax-react";
+import Tab from "./../components/common/Tab";
+import { color_Icone } from "../styles/module/style.position";
 
 const Categorypage = () => {
-  const lang = localStorage.getItem("language");
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const taxtcategory = useSelector((state) => state.txtcategory);
   const categorys = useSelector((state) => state.categorys);
@@ -39,180 +45,122 @@ const Categorypage = () => {
     <Fragment>
       <Mainlayout>
         <Fragment>
-          {" "}
-          <div
-            className="alert alert-light  border-rightW todobox "
-            style={{ cursor: "pointer" }}
-            role="alert"
-            onClick={() => {
+          <Tab
+            onclick={() => {
               navigate("/document");
             }}
-          >
-            <div
-              className="text"
-              style={{
-                textAlign: lang === "fa" ? "right" : "left",
-                width: "100%",
-              }}
-            >
-              مستندات
-            </div>
-          </div>
-          <div
-            className="alert alert-light  border-rightW todobox "
-            style={{ cursor: "pointer" }}
-            role="alert"
-            onClick={() => {
+            text={"مستندات"}
+            icon={
+              <DocumentText size="32" color={color_Icone()} variant="Bulk" />
+            }
+          ></Tab>
+          <Tab
+            onclick={() => {
               navigate("/setting");
             }}
-          >
-            <div
-              className="text"
-              style={{
-                textAlign: lang === "fa" ? "right" : "left",
-                width: "100%",
-              }}
-            >
-              تنضیمات
-            </div>
-          </div>
+            text={"تنضیمات"}
+            icon={<Setting2 size="32" color={color_Icone()} variant="Bulk" />}
+          ></Tab>
           <br />
           دسته بندی کارها
           <br />
           <Tab
-              datatoggle="modal"
-              datatarget="#exampleModalCenter"
-              classNameNew={"dashed"}
-              text={
-                <div>
-                  <CalendarAdd size="32" color="#0d6efd" variant="Bulk" /> Add
-                </div>
-              }
-            ></Tab>
+            datatoggle="modal"
+            datatarget="#exampleModalCenter"
+            text={"Add"}
+            icon={
+              <CalendarAdd size="32" color={color_Icone()} variant="Bulk" />
+            }
+          ></Tab>
           <br />
           {categorys.map((item) => {
-            console.log(categorys, item);
             return (
               <Fragment>
-                <div
-                  className="alert alert-light  border-rightW todobox "
-                  style={{
-                    cursor: "pointer",
-                    borderRight:
-                      categoryId === item.id
-                        ? "10px solid rgb(255, 43, 107)"
-                        : null,
-                    padding: 0,
+                <Tab
+                  text={item.name}
+                  selector={categoryId === item.id ? true : false}
+                  onclick={() => {
+                    dispatch(set_category(item.id));
+                    navigate("/");
                   }}
-                  role="alert"
-                >
-                  <div
-                    className="text"
-                    style={{
-                      textAlign: lang === "fa" ? "right" : "left",
-                      width: "100%",
-                      padding: 15,
-                    }}
-                    onClick={() => {
-                      dispatch(set_category(item.id));
-                      navigate("/");
-                    }}
-                  >
-                    {item.name}
-                  </div>
-                  <CloseSquare
-                    size="34"
-                    color="#f47373"
-                    variant="Bulk"
-                    style={{ marginRight: 15 }}
-                    onClick={() => {
-                      dispatch(set_category("default"));
-                      dispatch(delete_category_mtod(item.id));
-                      dispatch(delete_category(item.id));
-                    }}
-                  />
-                </div>
+                  icon={
+                    <CloseSquare
+                      size="34"
+                      color="#f47373"
+                      variant="Bulk"
+                      style={{ marginRight: 15 }}
+                      onClick={() => {
+                        dispatch(set_category("default"));
+                        dispatch(delete_category_mtod(item.id));
+                        dispatch(delete_category(item.id));
+                      }}
+                    />
+                  }
+                ></Tab>
               </Fragment>
             );
           })}
-          <div
-            className="alert alert-light  border-rightW todobox "
-            style={{
-              cursor: "pointer",
-              borderRight:
-                categoryId === "default"
-                  ? "10px solid rgb(255, 43, 107)"
-                  : null,
-            }}
-            role="alert"
-            onClick={() => {
+          <Tab
+            text={"default"}
+            selector={categoryId === "default" ? true : false}
+            onclick={() => {
               dispatch(set_category("default"));
               navigate("/");
             }}
-          >
-            <div
-              className="text"
-              style={{
-                textAlign: lang === "fa" ? "right" : "left",
-                width: "100%",
-              }}
-            >
-              default
-            </div>
-          </div>
+          ></Tab>
+          <br />
+          <br />
         </Fragment>
       </Mainlayout>
       <div
-          class="modal fade"
-          id="exampleModalCenter"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                  Set Category
-                </h5>
-              </div>
-              <div class="modal-body">
-                <label>Category</label>
-                <input
-                  type="text"
-                  style={{ width: "100%" }}
-                  className="form-control"
-                  value={taxtcategory}
-                  onChange={(e) =>
-                    dispatch(change_text_category(e.target.value))
-                  }
-                />
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                  onClick={() => dispatch(change_text_category(""))}
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-dismiss="modal"
-                  onClick={() => {
-                    dispatch(new_category(taxtcategory));
-                    dispatch(change_text_category(""));
-                  }}
-                >
-                  Save changes
-                </button>
-              </div>
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Set Category
+              </h5>
+            </div>
+            <div class="modal-body">
+              <label>Category</label>
+              <input
+                type="text"
+                style={{ width: "100%" }}
+                className="form-control"
+                value={taxtcategory}
+                onChange={(e) => dispatch(change_text_category(e.target.value))}
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                onClick={() => dispatch(change_text_category(""))}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                onClick={() => {
+                  dispatch(new_category(taxtcategory));
+                  dispatch(change_text_category(""));
+                }}
+              >
+                Save changes
+              </button>
             </div>
           </div>
         </div>
+      </div>
     </Fragment>
   );
 };
