@@ -36,3 +36,5 @@ export const set_them = (item) => ({ type: "SET_THEM", payload: item });
 export const reload_them = () => ({ type: "RELOAD_THEM" });
 export const set_language = (item) => ({ type: "SET_LANGUAGE", payload: item });
 export const reload_language = () => ({ type: "RELOAD_LANGUAGE" });
+export const set_direction = (item) => ({ type: "SET_DIRECTION", payload: item });
+export const reload_direction = () => ({ type: "RELOAD_DIRECTION" });

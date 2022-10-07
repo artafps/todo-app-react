@@ -5,6 +5,7 @@ import { textCategoryReducer } from "./todo/setCategorytxt";
 import { categorysTodos } from "./todo/categoryTodo";
 import { setCategoryReducer } from "./todo/setCategory";
 import { setThemReducer } from "./settings/Them/changeThem";
+import { setLanguageReducer } from "./settings/Language/changeLanguage";
 
 export const reducers = combineReducers({
   todos: cartTodos,
@@ -13,4 +14,5 @@ export const reducers = combineReducers({
   txttodo: textBoxNewTodoReducer,
   txtcategory: textCategoryReducer,
   them: setThemReducer,
+  language: setLanguageReducer
 });
