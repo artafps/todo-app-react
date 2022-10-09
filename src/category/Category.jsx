@@ -18,14 +18,16 @@ import {
   DocumentText,
 } from "iconsax-react";
 import Tab from "./../components/common/Tab";
-import { color_Icone } from "../styles/module/style.position";
-import { FormattedMessage } from 'react-intl';
+import { color_Icone, style_Them } from "../styles/module/style.position";
+import { FormattedMessage } from "react-intl";
 
 const Categorypage = () => {
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const taxtcategory = useSelector((state) => state.txtcategory);
   const categorys = useSelector((state) => state.categorys);
   const categoryId = useSelector((state) => state.categoryID);
+  const direction = useSelector((state) => state.direction);
+  const them = useSelector((state) => state.them);
   let navigate = useNavigate();
   let dispatch = useDispatch();
   if (windowSize.innerWidth > 1000) {
@@ -122,18 +124,27 @@ const Categorypage = () => {
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
+          <div className={`modal-content ${style_Them(them)}`}>
+            <div
+              className="modal-header"
+              style={
+                direction === "right"
+                  ? {
+                      display: "flex",
+                      justifyContent: "end",
+                    }
+                  : null
+              }
+            >
               <h5 className="modal-title" id="exampleModalLongTitle">
-                Set Category
+                <FormattedMessage id="createcategory" />
               </h5>
             </div>
             <div className="modal-body">
-              <label>Category</label>
               <input
                 type="text"
                 style={{ width: "100%" }}
-                className="form-control"
+                className={`form-control ${style_Them(them)}`}
                 value={taxtcategory}
                 onChange={(e) => dispatch(change_text_category(e.target.value))}
               />
@@ -145,7 +156,7 @@ const Categorypage = () => {
                 data-dismiss="modal"
                 onClick={() => dispatch(change_text_category(""))}
               >
-                Close
+                <FormattedMessage id="close" />
               </button>
               <button
                 type="button"
@@ -156,7 +167,7 @@ const Categorypage = () => {
                   dispatch(change_text_category(""));
                 }}
               >
-                Save changes
+                <FormattedMessage id="createNC" />
               </button>
             </div>
           </div>
