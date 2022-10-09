@@ -46,35 +46,28 @@ body {
 
 .border-lefts {
   border-left: rgb(43, 135, 255) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-lefte {
   border-left: rgb(255, 216, 43) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-rights {
   border-right: rgb(43, 135, 255) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-righte {
   border-right: rgb(255, 216, 43) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-lefte:active {
   border-left: rgb(255, 43, 107) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-lefts:active {
   border-left: rgb(255, 43, 107) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-righte:active {
   border-right: rgb(255, 43, 107) 10px solid;
-  background-color: #f5f5f5;
 }
 .border-rights:active {
   border-right: rgb(255, 43, 107) 10px solid;
-  background-color: #f5f5f5;
+  
 }
 .input-group-width {
   width: 50%;
@@ -221,26 +214,26 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height:  auto;
+  height: auto;
   font-size: 15px;
   margin: auto;
   cursor: pointer;
   border-radius: 10px;
-  background: #f5f5f5;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  color: rgb(61, 61, 61) !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-family: iransans;
+  box-shadow: 0px 0px 5px #46464f2a;
 }
 .tabs2:hover {
   width: 90%;
   height: 50px, auto;
   margin: auto;
   border-radius: 10px;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-color: rgb(255, 43, 107);
-  background: #e3e5e8;
+  box-shadow: 0px 0px 5px #8f8f9350;
+
 }
 .text-tabL {
   overflow: hidden;
@@ -261,4 +254,27 @@ body {
   padding: 15px;
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
+}
+.active-btn {
+  background-color: #f5f5f5 !important;
+  color: #25252f !important;
+  border-color: #f5f5f5 !important;
+}
+.themDarkBack {
+  background-color: #2f2f44f2;
+  color: #f5f5f5;
+  border-color: #25252f;
+}
+.themDarkBack:focus {
+  background-color: #545463f2;
+  color: #f5f5f5;
+  border-color: #25252f;
+}
+.alert-d {
+  background-color: #2f2f44f2;
+  color: #f5f5f5;
+}
+.alert-l {
+  background-color: #f5f5f5 ;
+  color: #25252f ;
 }

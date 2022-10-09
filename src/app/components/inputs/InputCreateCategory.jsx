@@ -1,61 +1,78 @@
 import React, { Fragment } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import { FormattedMessage } from "react-intl";
+
 import {
   change_text_category,
   new_category,
 } from "../../../redux/actions/counter";
+import { style_Them } from "../../../styles/module/style.position";
 
 const InputCreateCategory = () => {
   const taxtcategory = useSelector((state) => state.txtcategory);
+  const direction = useSelector((state) => state.direction);
+  const them = useSelector((state) => state.them);
   const dispatch = useDispatch();
   return (
     <Fragment>
       {" "}
       <div
-        class="modal fade"
+        className="modal fade "
         id="exampleModalCenter"
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                Set Category
+        <div
+          className="modal-dialog modal-dialog-centered" 
+          role="document"
+        >
+          <div className={`modal-content ${style_Them(them)}`}>
+            <div
+              className="modal-header"
+              style={
+                direction === "right"
+                  ? {
+                      display: "flex",
+                      justifyContent: "end",
+                    }
+                  : null
+              }
+            >
+              <h5 className="modal-title" id="exampleModalLongTitle">
+                <FormattedMessage id="createcategory" />
               </h5>
             </div>
-            <div class="modal-body">
-              <label>Category</label>
+            <div className="modal-body">
               <input
                 type="text"
                 style={{ width: "100%" }}
-                className="form-control"
+                className={`form-control ${style_Them(them)}`}
                 value={taxtcategory}
                 onChange={(e) => dispatch(change_text_category(e.target.value))}
               />
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-dismiss="modal"
                 onClick={() => dispatch(change_text_category(""))}
               >
-                Close
+                <FormattedMessage id="close" />
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 data-dismiss="modal"
                 onClick={() => {
                   dispatch(new_category(taxtcategory));
                   dispatch(change_text_category(""));
                 }}
               >
-                Save changes
+                <FormattedMessage id="createNC" />
               </button>
             </div>
           </div>

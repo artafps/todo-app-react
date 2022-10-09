@@ -1,20 +1,27 @@
 import { CloseSquare } from "iconsax-react";
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import {
   style_TodoComplited,
   style_TodoComplitedText,
 } from "../styles/module/style.position.jsx";
 
 const Todo = (props) => {
+  const direction = useSelector((state) => state.direction);
+  const them = useSelector((state) => state.them);
   return (
     <Fragment key={props.idprop}>
-      {"left" === "right" ? (
+      {direction === "right" ? (
         <div
-          className={style_TodoComplited(props.complited, "right")}
+          className={` ${style_TodoComplited(
+            them,
+            props.complited,
+            direction
+          )}`}
           role="alert"
         >
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
             style={{ cursor: "pointer", borderRadius: "50px" }}
             checked={props.complited ? true : false}
@@ -23,7 +30,7 @@ const Todo = (props) => {
           />
           <div
             className="text"
-            style={style_TodoComplitedText(props.complited, "right")}
+            style={style_TodoComplitedText(props.complited, direction)}
           >
             {props.text}
           </div>
@@ -40,7 +47,7 @@ const Todo = (props) => {
         </div>
       ) : (
         <div
-          className={style_TodoComplited(props.complited, "left")}
+          className={style_TodoComplited(them,props.complited, direction)}
           role="alert"
         >
           <button
@@ -54,12 +61,12 @@ const Todo = (props) => {
           <div className="text"> {" | "}</div>
           <div
             className="text"
-            style={style_TodoComplitedText(props.complited, "left")}
+            style={style_TodoComplitedText( props.complited, direction)}
           >
             {props.text}
           </div>
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
             style={{ cursor: "pointer", borderRadius: "50px" }}
             checked={props.complited ? true : false}

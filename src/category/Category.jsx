@@ -19,6 +19,7 @@ import {
 } from "iconsax-react";
 import Tab from "./../components/common/Tab";
 import { color_Icone } from "../styles/module/style.position";
+import { FormattedMessage } from 'react-intl';
 
 const Categorypage = () => {
   const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -49,7 +50,7 @@ const Categorypage = () => {
             onclick={() => {
               navigate("/document");
             }}
-            text={"مستندات"}
+            text={<FormattedMessage id="document" />}
             icon={
               <DocumentText size="32" color={color_Icone()} variant="Bulk" />
             }
@@ -58,7 +59,7 @@ const Categorypage = () => {
             onclick={() => {
               navigate("/setting");
             }}
-            text={"تنضیمات"}
+            text={<FormattedMessage id="setting" />}
             icon={<Setting2 size="32" color={color_Icone()} variant="Bulk" />}
           ></Tab>
           <br />
@@ -67,7 +68,7 @@ const Categorypage = () => {
           <Tab
             datatoggle="modal"
             datatarget="#exampleModalCenter"
-            text={"Add"}
+            text={<FormattedMessage id="add.nav" />}
             icon={
               <CalendarAdd size="32" color={color_Icone()} variant="Bulk" />
             }
@@ -101,7 +102,7 @@ const Categorypage = () => {
             );
           })}
           <Tab
-            text={"default"}
+            text={<FormattedMessage id="default.nav" />}
             selector={categoryId === "default" ? true : false}
             onclick={() => {
               dispatch(set_category("default"));
@@ -113,21 +114,21 @@ const Categorypage = () => {
         </Fragment>
       </Mainlayout>
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModalCenter"
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLongTitle">
                 Set Category
               </h5>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <label>Category</label>
               <input
                 type="text"
@@ -137,10 +138,10 @@ const Categorypage = () => {
                 onChange={(e) => dispatch(change_text_category(e.target.value))}
               />
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-dismiss="modal"
                 onClick={() => dispatch(change_text_category(""))}
               >
@@ -148,7 +149,7 @@ const Categorypage = () => {
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 data-dismiss="modal"
                 onClick={() => {
                   dispatch(new_category(taxtcategory));

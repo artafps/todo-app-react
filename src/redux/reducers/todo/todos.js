@@ -1,6 +1,5 @@
 export const cartTodos = (state = [], action) => {
-        
-switch (action.type) {
+  switch (action.type) {
     case "CLOSE":
       const todoCLOSE = [...state];
       const cartupdate = todoCLOSE.filter((item) => {
@@ -9,26 +8,26 @@ switch (action.type) {
       localStorage.setItem("todos", JSON.stringify(cartupdate));
       return (state = cartupdate);
     case "DELETE_CATEGORY_MOVE_TO_DEFAULT":
-        const todos = [...state];
-        const upTodos = todos.filter((item) => {
-          return item.idsection !== action.idsection;
-        });
-        const deleteCategoryTodos = todos.filter((item) => {
-          return item.idsection === action.idsection;
-        });
-        deleteCategoryTodos.map((item)=>{
-          const data = {
-            id: item.id,
-            name: item.name,
-            complited: item.complited,
-            idsection: "default",
-          }
-          
-           upTodos.push(data)
-        })
-        localStorage.setItem("todos", JSON.stringify(upTodos));
-        
-      return (state = upTodos); 
+      const todos = [...state];
+      const upTodos = todos.filter((item) => {
+        return item.idsection !== action.idsection;
+      });
+      const deleteCategoryTodos = todos.filter((item) => {
+        return item.idsection === action.idsection;
+      });
+      deleteCategoryTodos.map((item) => {
+        const data = {
+          id: item.id,
+          name: item.name,
+          complited: item.complited,
+          idsection: "default",
+        };
+
+        upTodos.push(data);
+      });
+      localStorage.setItem("todos", JSON.stringify(upTodos));
+
+      return (state = upTodos);
     case "COMOLITED":
       const todoCOMOLITED = [...state];
       const cartindex = todoCOMOLITED.findIndex((e) => e.id === action._id);
@@ -61,15 +60,6 @@ switch (action.type) {
           .split("]")[0]
           .split("},")
           .map((item) => {
-            console.log(item
-              .replace('{"id":"', "")
-              .replace('"name":"', "")
-              .replace('"complited":', "")
-              .replace('"idsection":"', "")
-              .replace("}", "")
-              .replace('"', "")
-              .replace('"', "")
-              .replace('"', ""))
             const todo = {
               id: item
                 .replace('{"id":"', "")

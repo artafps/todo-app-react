@@ -10,16 +10,21 @@ import { useNavigate } from "react-router-dom";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-
-import { en, fa } from "./../language";
+import { FormattedMessage } from "react-intl";
 import Lottie from "lottie-react";
 import voice from "../lottefile/15238-voice-animation.json";
 import { new_todo } from "../redux/actions/counter";
 import { change_text } from "./../redux/actions/counter";
-import { useDispatch } from "react-redux";
-import { color_Icone, style_transcript } from "../styles/module/style.position";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  color_Icone,
+  style_Them,
+  style_transcript,
+} from "../styles/module/style.position";
 function Header() {
-  const [lang, setlang] = useState();
+  const language = useSelector((state) => state.language);
+  const them = useSelector((state) => state.them);
+  const direction = useSelector((state) => state.direction);
   const [textCar, setTextCar] = useState();
   const [, setstatus] = useState([]);
   const dispatch = useDispatch();
@@ -32,16 +37,16 @@ function Header() {
 
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   let navigate = useNavigate();
-  let SETER = lang === "fa" ? "تنظیم کن" : "make setting";
-  let DELETE = lang === "fa" ? "پاک کن" : "make delete";
-  let MICOFF = lang === "fa" ? "میکروفون را خاموش کن" : "off";
-  let RELOAD = lang === "fa" ? "رفرش" : "reload";
-  let MOVETODOAPP = lang === "fa" ? "تودو اپ" : "to-do app";
-  let MOVETODOAPP2 = lang === "fa" ? "توتو اپ" : "tutuapp";
-  let MOVEDOCUMENT = lang === "fa" ? "مستندات" : "Hey Arthur document";
-  let MOVESETTING = lang === "fa" ? "تنظیمات" : "Hey Arthur setting";
+  let SETER = language === "fa" ? "تنظیم کن" : "make setting";
+  let DELETE = language === "fa" ? "پاک کن" : "make delete";
+  let MICOFF = language === "fa" ? "میکروفون را خاموش کن" : "off";
+  let RELOAD = language === "fa" ? "رفرش" : "reload";
+  let MOVETODOAPP = language === "fa" ? "تودو اپ" : "to-do app";
+  let MOVETODOAPP2 = language === "fa" ? "توتو اپ" : "tutuapp";
+  let MOVEDOCUMENT = language === "fa" ? "مستندات" : "hey Arthur document";
+  let MOVESETTING = language === "fa" ? "تنظیمات" : "hey Arthur setting";
 
-  if (lang === "fa") {
+  if (language === "fa") {
     if (transcript.includes(SETER)) {
       console.log(transcript.split("تنظیم کن")[0]);
       if (textCar !== transcript.split("تنظیم کن")[0]) {
@@ -98,18 +103,13 @@ function Header() {
       setstatus(false);
     } else {
       SpeechRecognition.startListening({
-        language: lang === "fa" ? "fa-IR" : "en-US",
+        language: language === "fa" ? "fa-IR" : "en-US",
         continuous: true,
       });
       setstatus(true);
     }
     resetTranscript();
   };
-
-  useEffect(() => {
-    const language = localStorage.getItem("language");
-    if (language !== null) setlang(language);
-  }, []);
 
   useEffect(() => {
     function handleWindowResize() {
@@ -122,7 +122,7 @@ function Header() {
   }, []);
   return (
     <Fragment>
-      <div className="box-header" role="alert">
+      <div className={`box-header ${style_Them(them)}`} role="alert">
         <div
           className="text-Head"
           onClick={() => {
@@ -130,11 +130,14 @@ function Header() {
           }}
         >
           {" "}
-          Todo App
+          <FormattedMessage id="title.head" />
         </div>
 
         <div>
-          <button className="btn btn-light mx-1" onClick={handlemic}>
+          <button
+            className={`btn btn-light mx-1 ${style_Them(them)}`}
+            onClick={handlemic}
+          >
             {listening ? (
               <div style={{ display: "flex", height: 20 }}>
                 <Lottie
@@ -149,12 +152,14 @@ function Header() {
           </button>
           {windowSize.innerWidth > 600 ? (
             <button
-              className="btn btn-light mx-1"
+              className={`btn btn-light mx-1 ${style_Them(them)}`}
               onClick={() => {
                 navigate("/setting");
               }}
             >
-              {windowSize.innerWidth > 600 ? "تنضیمات" : null}
+              {windowSize.innerWidth > 600 ? (
+                <FormattedMessage id="setting" />
+              ) : null}
               <Setting2
                 size="24"
                 style={
@@ -166,12 +171,14 @@ function Header() {
           ) : null}
           {windowSize.innerWidth > 600 ? (
             <button
-              className="btn btn-light mx-1"
+              className={`btn btn-light mx-1 ${style_Them(them)}`}
               onClick={() => {
                 navigate("/document");
               }}
             >
-              {windowSize.innerWidth > 600 ? "مستندات" : null}
+              {windowSize.innerWidth > 600 ? (
+                <FormattedMessage id="document" />
+              ) : null}
               <DocumentText
                 size="24"
                 style={
@@ -183,7 +190,7 @@ function Header() {
           ) : null}
           {windowSize.innerWidth < 1000 ? (
             <button
-              className="btn btn-light mx-1"
+              className={`btn btn-light mx-1 ${style_Them(them)}`}
               onClick={() => {
                 navigate("/category");
               }}
@@ -200,7 +207,10 @@ function Header() {
         </div>
       </div>
       {transcript !== "" ? (
-        <div className="box-text-les" style={style_transcript("right")}>
+        <div
+          className={`box-text-les ${style_Them(them)}`}
+          style={style_transcript(direction)}
+        >
           {transcript}
         </div>
       ) : null}

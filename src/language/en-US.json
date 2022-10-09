@@ -1,0 +1,14 @@
+{
+  "title.head": "Todo app",
+  "default.nav": "Default",
+  "add.nav": "Add",
+  "changeLanguage": "Change Language",
+  "changeThem": "Change Them",
+  "setting": "Setting",
+  "document": "Document",
+  "documenttxt": "Hello my friend, the sound system is not available at the moment",
+  "documentgift": "If you want to support me, you can click on the gif below",
+  "createcategory": "Create Category",
+  "createNC": "Cerate New Category",
+  "close": "Close"
+}

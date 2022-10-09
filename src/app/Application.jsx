@@ -1,23 +1,17 @@
 import { useEffect, useState } from "react";
 
 import Mainlayout from "./../layout/MainLayout";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import NavbarLeft from "./components/navbar/NavbarLeft";
 import NavbarRight from "./components/navbar/NavbarRight";
-import {
-  reload_category,
-  reload_todo,
-  reload_category_section,
-} from "./../redux/actions/counter";
+
 import InputCreateCategory from "./components/inputs/InputCreateCategory";
 function Application() {
-  const dispatch = useDispatch();
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const direction = useSelector((state) => state.direction);
+
   useEffect(() => {
-    dispatch(reload_todo());
-    dispatch(reload_category());
-    dispatch(reload_category_section());
     function handleWindowResize() {
       setWindowSize(getWindowSize());
     }
@@ -35,11 +29,11 @@ function Application() {
           className="continer"
           style={{ height: `${windowSize.innerHeight - 63}px` }}
         >
-          <NavbarRight />
-          <NavbarLeft />
+          {direction === "left" ? <NavbarRight /> : <NavbarLeft />}{" "}
+          {direction === "left" ? <NavbarLeft /> : <NavbarRight />}
         </div>
 
-        <InputCreateCategory  />
+        <InputCreateCategory />
       </Mainlayout>
     </div>
   );

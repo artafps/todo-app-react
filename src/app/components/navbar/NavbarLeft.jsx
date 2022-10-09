@@ -35,7 +35,10 @@ const NavbarLeft = () => {
   }, []);
   return (
     <Fragment>
-      <div className="navLeft" style={navLeft_style(windowSize.innerWidth)}>
+      <div
+        className="navLeft"
+        style={navLeft_style(windowSize.innerHeight, windowSize.innerWidth)}
+      >
         <div
           className="navLeft2 "
           style={navLeft2_style(windowSize.innerHeight)}
@@ -48,7 +51,6 @@ const NavbarLeft = () => {
                 })
                 .filter((item) => item.complited === false)
                 .map((e, index) => {
-                  console.log(e);
                   return (
                     <Todo
                       key={index}
@@ -83,7 +85,6 @@ const NavbarLeft = () => {
                 })
                 .filter((item) => item.complited === true)
                 .map((e, index) => {
-                  console.log(e);
                   return (
                     <Todo
                       key={index}

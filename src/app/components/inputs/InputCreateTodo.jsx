@@ -6,6 +6,7 @@ import { change_text, new_todo } from "../../../redux/actions/counter";
 import {
   color_sender,
   input_CreateTodo,
+  style_Them,
 } from "../../../styles/module/style.position";
 
 const InputCreateTodo = () => {
@@ -29,22 +30,39 @@ const InputCreateTodo = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+  const direction = useSelector((state) => state.direction);
+  const them = useSelector((state) => state.them);
 
   return (
     <Fragment>
-      <div className={"alert alert-primary  shadow todobox "} role="alert">
-        <div class="input-group">
-          <input
-            type="text"
-            style={input_CreateTodo(windowSize.innerWidth)}
-            className="form-control"
-            value={taxt}
-            onChange={(e) => dispatch(change_text(e.target.value))}
-          />
-          <button className="btn btn-primary" onClick={handleSubmit}>
-            <Send2 size="24" color={color_sender()} />
-          </button>
-        </div>
+      <div className={`alert alert-primary  shadow todobox ${style_Them(them)}`} role="alert">
+        {direction === "right" ? (
+          <div className="input-group">
+            <button className="btn btn-primary" onClick={handleSubmit}>
+              <Send2 size="24" color={color_sender()} />
+            </button>{" "}
+            <input
+              type="text "
+              style={input_CreateTodo(windowSize.innerWidth,direction)}
+              className={`form-control ${style_Them(them)}`}
+              value={taxt}
+              onChange={(e) => dispatch(change_text(e.target.value))}
+            />
+          </div>
+        ) : (
+          <div className="input-group">
+            <input
+              type="text "
+              style={input_CreateTodo(windowSize.innerWidth,direction)}
+              className={`form-control ${style_Them(them)}`}
+              value={taxt}
+              onChange={(e) => dispatch(change_text(e.target.value))}
+            />
+            <button className="btn btn-primary" onClick={handleSubmit}>
+              <Send2 size="24" color={color_sender()} />
+            </button>
+          </div>
+        )}
       </div>
     </Fragment>
   );
