@@ -1,17 +1,8 @@
 
 
-If anyone needs help with this I was able to work with a friend of mine at Hostinger and here is what your .htaccess file will need to include.
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://artafallahpoor.github.io/TodoAppInReact.js/$1 [L,R=301] 
 
-Copy and paste exactly:
-
-<IfModule mod_rewrite.c>
-
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
-
-</IfModule>
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ https://artafallahpoor.github.io/TodoAppInReact.js/$1 [L,R=301]
