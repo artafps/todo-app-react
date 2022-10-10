@@ -102,7 +102,7 @@ const Setting = () => {
         </button>
         <button
           className={`${style_Them(them)} ${styele_ClassName_btn_lang(
-            them,
+            
             them,
             language,
             "ar-UD"
