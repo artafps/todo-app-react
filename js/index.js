@@ -1,1 +1,1 @@
-$("#myModal").on("shown.bs.modal",(function(){$("#myInput").trigger("focus")}))
+document.querySelector("#myModal").addEventListener("shown.bs.modal",(function(){document.querySelector("#myInput").trigger("focus")}))
