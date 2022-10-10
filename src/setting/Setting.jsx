@@ -7,7 +7,6 @@ import {
 } from "../redux/actions/counter";
 import { FormattedMessage } from "react-intl";
 import {
-  color_sender,
   styele_ClassName_btn_lang,
   styele_ClassName_them,
   styele_color_them,
