@@ -1,0 +1,17 @@
+
+
+If anyone needs help with this I was able to work with a friend of mine at Hostinger and here is what your .htaccess file will need to include.
+
+Copy and paste exactly:
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+
+</IfModule>
