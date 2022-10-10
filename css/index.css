@@ -1,12 +1,9 @@
-@font-face {
-  font-family: IranSans;
-  src: url(./FontsFree-Net-ir_sans.ttf);
-}
+
 body {
   margin: auto;
   align-items: center;
   text-align: center;
-  font-family: IranSans, Tahoma;
+  font-family:  Tahoma;
   font-size: larger;
 }
 .text-Head {
