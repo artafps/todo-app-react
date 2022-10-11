@@ -126,7 +126,7 @@ function Header() {
         <div
           className="text-Head"
           onClick={() => {
-            navigate("/");
+            navigate("/todo-app-react/");
           }}
         >
           {" "}
@@ -154,7 +154,7 @@ function Header() {
             <button
               className={`btn btn-light mx-1 ${style_Them(them)}`}
               onClick={() => {
-                navigate("/setting");
+                navigate("/todo-app-react/setting");
               }}
             >
               {windowSize.innerWidth > 600 ? (
@@ -173,7 +173,7 @@ function Header() {
             <button
               className={`btn btn-light mx-1 ${style_Them(them)}`}
               onClick={() => {
-                navigate("/document");
+                navigate("/todo-app-react/document");
               }}
             >
               {windowSize.innerWidth > 600 ? (
@@ -192,7 +192,7 @@ function Header() {
             <button
               className={`btn btn-light mx-1 ${style_Them(them)}`}
               onClick={() => {
-                navigate("/category");
+                navigate("/todo-app-react/category");
               }}
             >
               <Category

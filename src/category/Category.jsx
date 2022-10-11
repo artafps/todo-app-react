@@ -31,7 +31,7 @@ const Categorypage = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   if (windowSize.innerWidth > 1000) {
-    navigate("/");
+    navigate("/todo-app-react/");
   }
   useEffect(() => {
     function handleWindowResize() {
@@ -50,7 +50,7 @@ const Categorypage = () => {
         <Fragment>
           <Tab
             onclick={() => {
-              navigate("/document");
+              navigate("/todo-app-react/document");
             }}
             text={<FormattedMessage id="document" />}
             icon={
@@ -59,7 +59,7 @@ const Categorypage = () => {
           ></Tab>
           <Tab
             onclick={() => {
-              navigate("/setting");
+              navigate("/todo-app-react/setting");
             }}
             text={<FormattedMessage id="setting" />}
             icon={<Setting2 size="32" color={color_Icone()} variant="Bulk" />}
@@ -84,7 +84,7 @@ const Categorypage = () => {
                   selector={categoryId === item.id ? true : false}
                   onclick={() => {
                     dispatch(set_category(item.id));
-                    navigate("/");
+                    navigate("/todo-app-react/");
                   }}
                   icon={
                     <CloseSquare
@@ -108,7 +108,7 @@ const Categorypage = () => {
             selector={categoryId === "default" ? true : false}
             onclick={() => {
               dispatch(set_category("default"));
-              navigate("/");
+              navigate("/todo-app-react/");
             }}
           ></Tab>
           <br />

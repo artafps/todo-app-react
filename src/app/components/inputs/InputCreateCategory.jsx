@@ -25,10 +25,7 @@ const InputCreateCategory = () => {
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
       >
-        <div
-          className="modal-dialog modal-dialog-centered" 
-          role="document"
-        >
+        <div className="modal-dialog modal-dialog-centered" role="document">
           <div className={`modal-content ${style_Them(them)}`}>
             <div
               className="modal-header"

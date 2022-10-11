@@ -20,14 +20,10 @@ const Tab = ({
   const them = useSelector((state) => state.them);
   return (
     <Fragment key={key}>
-      <div
-        data-toggle={datatoggle}
-        
-        data-target={datatarget}
-      >
+      <div data-toggle={datatoggle} data-target={datatarget}>
         {direction === "right" ? (
           <div
-            className={tabs_Direction(them,direction, classNameNew)}
+            className={tabs_Direction(them, direction, classNameNew)}
             style={tabs_Selector(direction, selector)}
           >
             <div className="m-2"> {icon} </div>
@@ -37,7 +33,7 @@ const Tab = ({
           </div>
         ) : (
           <div
-            className={tabs_Direction(them,direction, classNameNew)}
+            className={tabs_Direction(them, direction, classNameNew)}
             style={tabs_Selector(direction, selector)}
           >
             <div onClick={onclick} className={tabs_DirectionText(direction)}>

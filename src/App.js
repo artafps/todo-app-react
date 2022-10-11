@@ -53,10 +53,14 @@ function App() {
     <IntlProvider messages={lang}>
       <div>
         <Routes>
-          <Route path="/setting" exact element={<Setting />} />
-          <Route path="/" exact element={<Application />} />
-          <Route path="/document" exact element={<Document />} />
-          <Route path="/category" exact element={<Categorypage />} />
+          <Route path="/todo-app-react/setting" exact element={<Setting />} />
+          <Route path="/todo-app-react/" exact element={<Application />} />
+          <Route path="/todo-app-react/document" exact element={<Document />} />
+          <Route
+            path="/todo-app-react/category"
+            exact
+            element={<Categorypage />}
+          />
         </Routes>
       </div>{" "}
     </IntlProvider>
