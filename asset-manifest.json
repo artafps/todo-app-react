@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/artafallahpoor/todo-app-react/static/js/main.927ece08.js",
-    "index.html": "/artafallahpoor/todo-app-react/index.html",
-    "main.927ece08.js.map": "/artafallahpoor/todo-app-react/static/js/main.927ece08.js.map"
+    "main.js": "/todo-app-react/static/js/main.5392eb80.js",
+    "index.html": "/todo-app-react/index.html",
+    "main.5392eb80.js.map": "/todo-app-react/static/js/main.5392eb80.js.map"
   },
   "entrypoints": [
-    "static/js/main.927ece08.js"
+    "static/js/main.5392eb80.js"
   ]
 }
