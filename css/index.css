@@ -185,6 +185,7 @@ body {
 .navLeft2 {
   width: 100%;
   height: 100%;
+  height: 610px !important;
 }
 .navRight {
   height: 690px;
