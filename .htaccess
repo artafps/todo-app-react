@@ -1,6 +1,4 @@
 RewriteEngine On
 RewriteBase /todo-app-react/
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /todo-app-react/index.html [L]
+
+RewriteRule ^(.*)$ /index.html [L]
